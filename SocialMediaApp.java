@@ -41,9 +41,9 @@ public class SocialMediaApp {
             case 1 -> {
                 System.out.print("Enter post content: ");
                 String content = scanner.nextLine();
-                currentUser.createPost(content); // 🟢 Make sure this uses `currentUser`
+                currentUser.createPost(content); 
             }
-            case 2 -> currentUser.showFeed(); // 🟢 And this also uses `currentUser`
+            case 2 -> currentUser.showFeed(); 
             case 3 -> {
                 System.out.print("Enter username to follow: ");
                 String uname = scanner.nextLine();
