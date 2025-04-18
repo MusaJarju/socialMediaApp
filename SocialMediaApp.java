@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class SocialMediaApp {
-    private static final Map<String, User> users = new HashMap<>();
+    private static Map<String, User> users = new HashMap<>();
     private static User currentUser = null;
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         System.out.println("=== Welcome to Java Social Media Simulation ===");
@@ -20,7 +20,7 @@ public class SocialMediaApp {
         System.out.println("\n1. Sign Up\n2. Log In\n3. Exit");
         System.out.print("Choose: ");
         int choice = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // consume newline
 
         switch (choice) {
             case 1 -> signUp();
@@ -35,15 +35,15 @@ public class SocialMediaApp {
         System.out.println("1. Create Post\n2. View Feed\n3. Follow User\n4. Log Out");
         System.out.print("Choose: ");
         int choice = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // consume newline
 
         switch (choice) {
             case 1 -> {
                 System.out.print("Enter post content: ");
                 String content = scanner.nextLine();
-                currentUser.createPost(content);
+                currentUser.createPost(content); // 🟢 Make sure this uses `currentUser`
             }
-            case 2 -> currentUser.showFeed();
+            case 2 -> currentUser.showFeed(); // 🟢 And this also uses `currentUser`
             case 3 -> {
                 System.out.print("Enter username to follow: ");
                 String uname = scanner.nextLine();

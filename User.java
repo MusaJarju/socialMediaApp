@@ -20,6 +20,8 @@ public class User {
     public void createPost(String content) {
         posts.add(new Post(content));
         System.out.println("Post created!");
+        System.out.println("Total posts: " + posts.size());
+
     }
 
     public List<Post> getPosts() {
@@ -41,12 +43,20 @@ public class User {
 
     public void showFeed() {
         System.out.println("---- " + username + "'s Feed ----");
+    
+        // Show your own posts
+        for (Post post : posts) {
+            System.out.println(username + ": " + post);
+        }
+    
+        // Show posts from users you follow
         for (User user : following) {
             for (Post post : user.getPosts()) {
                 System.out.println(user.getUsername() + ": " + post);
             }
         }
     }
+    
 
     @Override
     public String toString() {
