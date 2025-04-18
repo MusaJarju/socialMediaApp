@@ -57,7 +57,33 @@ public class SocialMediaApp {
                 currentUser = null;
                 System.out.println("Logged out.");
             }
-            default -> System.out.println("Invalid choice!");
+            case 5 -> {
+                System.out.print("Enter the username of the post owner: ");
+                String uname = scanner.nextLine();
+                if (users.containsKey(uname)) {
+                    User postOwner = users.get(uname);
+                    List<Post> theirPosts = postOwner.getPosts();
+                    if (theirPosts.isEmpty()) {
+                        System.out.println("This user has no posts.");
+                    } else {
+                        for (int i = 0; i < theirPosts.size(); i++) {
+                            System.out.println(i + ": " + theirPosts.get(i));
+                        }
+                        System.out.print("Enter post number to like: ");
+                        int index = scanner.nextInt();
+                        scanner.nextLine();
+                        if (index >= 0 && index < theirPosts.size()) {
+                            theirPosts.get(index).like();
+                            System.out.println("You liked the post.");
+                        } else {
+                            System.out.println("Invalid post number.");
+                        }
+                    }
+                } else {
+                    System.out.println("User not found.");
+                }
+            }
+            
         }
     }
 
